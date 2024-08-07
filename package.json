@@ -1,0 +1,31 @@
+{
+  "name": "lp-register",
+  "version": "1.0.0",
+  "description": "LP Register is an application that searches for albums, and you can create collections with recommendations.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeninoMenino/lp-register.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeninoMenino/lp-register/issues"
+  },
+  "homepage": "https://github.com/MeninoMenino/lp-register#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.1.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "tsx": "^4.16.5"
+  }
+}
