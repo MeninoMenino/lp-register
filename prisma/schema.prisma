@@ -14,7 +14,7 @@ model Album {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   artist String
-  year Int
+  year String
   genres String[]
 
   @@map("albums")

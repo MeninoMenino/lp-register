@@ -1,7 +1,7 @@
 interface AlbumInterface {
     name: string,
     artist: string,
-    year: number,
+    year: string,
     genres: string[]
 }
 

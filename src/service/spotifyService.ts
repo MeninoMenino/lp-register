@@ -38,8 +38,6 @@ class SpotifyService {
         var params = {q: "album:" + name, type: "album"}
         url.search = new URLSearchParams(params).toString();
 
-        console.log(url);
-
         const response = await fetch(url, {
             method: "GET",
             headers: {

@@ -33,7 +33,7 @@ class AlbumService {
         }
     }
 
-    async getAlbumByYear(year: number) {
+    async getAlbumByYear(year: string) {
         try{
             return await prismaClient.album.findMany({
                 where: {

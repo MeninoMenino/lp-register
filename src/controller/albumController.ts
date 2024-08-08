@@ -48,7 +48,7 @@ class AlbumController {
         //List by year
         this.router.get("/getByYear", async (req, res) =>{
             try{
-                let album = await this.albumService.getAlbumByYear(Number(req.query.year));
+                let album = await this.albumService.getAlbumByYear(String(req.query.year));
                 res.status(200).send(album);
             } catch(error) {
                 res.status(500).send(error);
