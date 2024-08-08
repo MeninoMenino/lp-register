@@ -15,11 +15,11 @@ class SpotifyController {
 
     private initializeRoutes() {
         //"GET" routes
-        //Token test
-        this.router.get("/", async (req, res) =>{
+        //Get album by name
+        this.router.get("/listAlbumsByName", async (req, res) =>{
             try{
-                let token = await this.spotifyService.getToken();
-                res.status(200).json(token);
+                let album = await this.spotifyService.listAlbumsByName(String(req.query.name));
+                res.status(200).json(album);
             } catch(error) {
                 res.status(500).send(error);
             }

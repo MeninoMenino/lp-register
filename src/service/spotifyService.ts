@@ -4,13 +4,16 @@ class SpotifyService {
 
     private token? : string;
 
+    private AUTH_URL = "https://accounts.spotify.com/api/token";
+    private API_URL = "https://api.spotify.com/v1/search";
+
     constructor() {
         //this.getToken();
     }
 
     //Authentication
-    public async getToken() {
-        const response = await fetch("https://accounts.spotify.com/api/token", {
+    private async getToken() {
+        const response = await fetch(this.AUTH_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -25,6 +28,26 @@ class SpotifyService {
         const data = await response.json();
 
         this.token = data.access_token;
+    }
+
+    //Search for albums by name
+    public async listAlbumsByName(name: string) {
+        await this.getToken();
+
+        var url = new URL(this.API_URL)
+        var params = {q: "album:" + name, type: "album"}
+        url.search = new URLSearchParams(params).toString();
+
+        console.log(url);
+
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + this.token,
+            }
+        });
+
+        return await response.json();
     }
 }
 
