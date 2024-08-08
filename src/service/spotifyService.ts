@@ -36,7 +36,9 @@ class SpotifyService {
         await this.getToken();
 
         var url = new URL(this.API_URL)
-        let params : string = new SpotifyQueryBuilder().withName(name).build()
+        let params : string = new SpotifyQueryBuilder()
+            .withName(name)
+            .build()
         url.search = new URLSearchParams(params).toString();
 
         const response = await fetch(url, {
