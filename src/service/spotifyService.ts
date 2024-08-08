@@ -1,4 +1,5 @@
 import { stringify } from "querystring";
+import { SpotifyQueryBuilder } from "../builders/spotifyQueryBuilder";
 
 class SpotifyService {
 
@@ -35,7 +36,7 @@ class SpotifyService {
         await this.getToken();
 
         var url = new URL(this.API_URL)
-        var params = {q: "album:" + name, type: "album"}
+        let params : string = new SpotifyQueryBuilder().withName(name).build()
         url.search = new URLSearchParams(params).toString();
 
         const response = await fetch(url, {
