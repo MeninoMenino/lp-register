@@ -27,8 +27,8 @@ export class AlbumObject implements AlbumInterface {
         let objId = spotifyObj.id;
         let objName = spotifyObj.name;
         let objArtist = spotifyObj.artists[0].name;
+        //TODO: Get year from release_date pattern yyyy-MM-dd
         let objYear = spotifyObj.release_date;
-
         //TODO: Resolve album genres
         let objGenres: string[] = [];
 
