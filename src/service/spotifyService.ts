@@ -1,5 +1,7 @@
 import { stringify } from "querystring";
 import { SpotifyQueryBuilder } from "../builders/spotifyQueryBuilder";
+import { AlbumObject } from "../model/album";
+import { SpotifyAlbumsList } from "../model/spotifyAlbumsList";
 
 class SpotifyService {
 
@@ -32,7 +34,7 @@ class SpotifyService {
     }
 
     //Search for albums by name
-    public async listAlbumsByName(name: string) {
+    public async listAlbumsByName(name: string) : Promise<AlbumObject[]> {
         await this.getToken();
 
         var url = new URL(this.API_URL)
@@ -48,7 +50,10 @@ class SpotifyService {
             }
         });
 
-        return await response.json();
+        //let responseObject : Record<string, any> = await response.json();
+        let responseObject : SpotifyAlbumsList = await response.json();
+
+        return AlbumObject.spotifyObjectsToAlbumObjects(responseObject.albums.items);
     }
 }
 
